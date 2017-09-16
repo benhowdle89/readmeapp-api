@@ -2,7 +2,5 @@
   "scripts": {
     "start": "node app.js"
   },
-  "dependencies": {
-    "sleep-promise": "^2.0.0"
-  }
+  "dependencies": {}
 }
