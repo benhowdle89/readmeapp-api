@@ -8,5 +8,8 @@
   },
   "lambda": {
     "memory": 1024
+  },
+  "environment": {
+    "PRODUCTION": true
   }
 }

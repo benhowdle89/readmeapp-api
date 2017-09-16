@@ -3,6 +3,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "dotenv": "^4.0.0",
     "oauth": "^0.9.15"
   }
 }
