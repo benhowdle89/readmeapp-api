@@ -1,5 +1,8 @@
 const http = require('http')
-const OAuth = require('oauth').OAuth
+const Promise = require('bluebird')
+const OAuth = Promise.promisifyAll(require('oauth'), {
+  multiArgs: true
+}).OAuth
 
 if (!process.env.PRODUCTION) {
   require('dotenv').config()
@@ -12,7 +15,7 @@ const {
   TWITTER_CALLBACK_URL
 } = process.env
 
-http.createServer((req, res) => {
+http.createServer(async (req, res) => {
   const oauth = new OAuth(
     "https://api.twitter.com/oauth/request_token",
     "https://api.twitter.com/oauth/access_token",
@@ -23,9 +26,7 @@ http.createServer((req, res) => {
     "HMAC-SHA1"
   )
 
-  oauth.getOAuthRequestToken((error, oauth_token, oauth_token_secret) => {
-    
-  })
+  const [ oAuthToken, oAuthTokenSecret ] = await oauth.getOAuthRequestTokenAsync()
   
   res.end('Hello World from Node 8\n')
 }).listen(PORT)
