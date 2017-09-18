@@ -4,7 +4,7 @@ if (!process.env.PRODUCTION) {
   require('dotenv').config()
 }
 
-const Twitter = require('./lib/twitter')
+const Router = require('./lib/router')
 const response = require('./lib/response')
 
 const {
@@ -12,9 +12,9 @@ const {
 } = process.env
 
 http.createServer(async (req, res) => {
-  
-  const twitter = new Twitter()
-  const { data, errors } = await twitter.getOAuthRequestToken()
+
+  const router = new Router()
+  const { data, errors } = await router.handle(req)
   return res.end(response({
     data,
     errors
