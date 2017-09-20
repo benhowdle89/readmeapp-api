@@ -15,23 +15,27 @@ const {
 
 http.createServer(async (req, res) => {
   jsonBody(req, res, async (err, body) => {
+    
     CORS(res)
     
-      if (req.method === 'OPTIONS') {
-        res.writeHead(200)
-        res.end()
-        return
-      }
-    
-      const router = new Router()
-      const {
-        data = {},
-        errors = {}
-      } = await router.handle(req, body)
-      return res.end(response({
-        data,
-        errors
-      }))
+    if (req.method === 'OPTIONS') {
+      res.writeHead(200)
+      res.end()
+      return
+    }
+  
+    const router = new Router()
+
+    const {
+      data = {},
+      errors = {}
+    } = await router.handle(req, body)
+
+    return res.end(response({
+      data,
+      errors
+    }))
+
   })
 }).listen(PORT)
 
