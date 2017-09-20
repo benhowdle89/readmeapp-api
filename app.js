@@ -31,6 +31,8 @@ http.createServer(async (req, res) => {
       errors = {}
     } = await router.handle(req, body)
 
+    if (errors && Object.keys(errors).length) res.statusCode = 400
+
     return res.end(response({
       data,
       errors
