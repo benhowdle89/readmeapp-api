@@ -10,6 +10,9 @@
     "memory": 1024
   },
   "environment": {
-    "PRODUCTION": true
+    "PRODUCTION": true,
+    "TWITTER_CONSUMER_KEY": "wyhwTSth5AoowRWlmokTuyEcv",
+    "TWITTER_CONSUMER_SECRET": "jeaS2BasT2Pz6WSPHljP1u0WNxLUdxOUu8hu4tgtUNJzuw4YwY",
+    "TWITTER_CALLBACK_URL": "http://readmeapp.stream/callback"
   }
 }
