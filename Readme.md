@@ -8,6 +8,12 @@ Node 8 application using a binary.
 $ yarn
 ```
 
+## Run
+
+```
+$ nodemon
+```
+
 ## Deploy
 
 ```
