@@ -31,11 +31,15 @@ http.createServer(async (req, res) => {
       errors = {}
     } = await router.handle(req, body)
 
-    if (errors && Object.keys(errors).length) res.statusCode = 400
+    const responseErrors = errors.errors || errors
+
+    if (responseErrors && Object.keys(responseErrors).length) {
+      res.statusCode = responseErrors.statusCode || 400
+    }
 
     return res.end(response({
       data,
-      errors
+      errors: responseErrors
     }))
 
   })
